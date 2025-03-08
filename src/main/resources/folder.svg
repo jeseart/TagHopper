@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon/16/云文件</title>
+    <g id="Icon/16/云文件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
+        <path d="M2,2 L6.38196601,2 C6.76073807,2 7.10700119,2.21400238 7.2763932,2.5527864 L8,4 L8,4 L14,4 C14.5522847,4 15,4.44771525 15,5 L15,13 C15,13.5522847 14.5522847,14 14,14 L2,14 C1.44771525,14 1,13.5522847 1,13 L1,3 C1,2.44771525 1.44771525,2 2,2 Z"
+              id="矩形" stroke="#52565E" stroke-width="1.5"></path>
+    </g>
+</svg>

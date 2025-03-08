@@ -1,0 +1,64 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.cn21.edrive.taghopper</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>TagHopper</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="jeseart@126.com" url="https://github.com/jeseart">天翼数字生活</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+    本插件应用于项目文档和代码链接跳转场景，适用于流程图关联代码、描述文档关联代码，并实现点击跳转的需求。<br>
+
+     <em>标记示范：</em><br>
+     跳转到puml文件 @puml edrive-prod-corp\doc\核心流程\跳转.puml<br>
+     跳转到文档文件（不区分文件后缀） @doc edrive-prod-corp\doc\详细设计.doc<br>
+     跳转到markdown文件 @md edrive-prod-corp\doc\readme.md<br>
+     跳转到文件夹 @folder edrive-prod-corp\doc<br>
+     跳转到java文件 @java edrive-prod-corp\src\main\java\com\cn21\edrive\Jump.java<br>
+     跳转到java文件指定行 @java edrive-prod-corp\src\main\java\com\cn21\edrive\Jump.java:100<br>
+     跳转到java方法代码引用 @java com.cn21.edrive.Jump#jumpMethod(java.lang.Long)<br>
+     跳转到指定项目的java方法代码引用（项目名是后向匹配的） @java {corp-portal}com.cn21.edrive.Jump#jumpMethod(java.lang.Long)<br>
+
+     <em>说明：</em><br>
+     1、@java标记，不标识项目名，则跳转到第一个扫描结果；<br>
+     2、java方法的引用，可使用右键菜单的Copy / Paste Special->Copy Reference(Ctrl+Alt+Shift+C)复制方法引用；在Javadoc注释中Ctrl+V获得引用路径；<br>
+     3、同名类同名不同参的方法在不同模块共存的场景下，可能会出现漏拷贝参数的情况，若无法正确跳转请检查参数个数。<br>
+     4、只要被引用的文件和使用本标记的文件在同一个根目录下被导入，即可实现跳转。<br>
+     5、示范中使用的相对路径=去掉根目录的绝对路径，项目名均为根目录下的一级目录<br>
+
+     <em>各类型文件内的注释符号：</em><br>
+     puml: '<br>
+     java: //<br>
+     groovy: //<br>
+     md：&lt;ul/&gt;&lt;!-- --&gt; 或 &lt;!-- --&gt;&lt;!-- --&gt;(不这么写会有图标飘走的问题)<br>
+  ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.xml</depends>
+    <depends>com.intellij.modules.java</depends>
+
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <codeInsight.lineMarkerProvider language="" implementationClass="com.cn21.edrive.tophopper.pumlLink.PumlTagLineMarkerProvider"/>
+        <codeInsight.lineMarkerProvider language="" implementationClass="com.cn21.edrive.tophopper.javaLink.JavaTagLineMarkerProvider"/>
+        <codeInsight.lineMarkerProvider language="" implementationClass="com.cn21.edrive.tophopper.fileLink.FileTagLineMarkerProvider"/>
+        <codeInsight.lineMarkerProvider language="" implementationClass="com.cn21.edrive.tophopper.markdownLink.MarkdownTagLineMarkerProvider"/>
+        <codeInsight.lineMarkerProvider language="" implementationClass="com.cn21.edrive.tophopper.folderLink.FolderTagLineMarkerProvider"/>
+    </extensions>
+
+
+
+
+</idea-plugin>

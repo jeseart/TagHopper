@@ -1,0 +1,50 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '1.13.3'
+}
+
+group = "com.cn21.edrive"
+version = "1.0"
+
+sourceCompatibility = 17
+targetCompatibility = 17
+
+repositories {
+    maven { url 'https://maven.aliyun.com/repository/central/'}
+    maven { url 'https://maven.aliyun.com/repository/public/' }
+    maven { url 'https://maven.aliyun.com/repository/google/' }
+    maven { url 'https://maven.aliyun.com/repository/jcenter/'}
+    maven { url 'https://maven.aliyun.com/repository/gradle-plugin'}
+    //    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
+    testRuntimeOnly    'org.junit.jupiter:junit-jupiter-engine:5.9.3'
+    testRuntimeOnly    'org.junit.vintage:junit-vintage-engine:5.9.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.3'
+}
+
+intellij {
+    //https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html#intellij-extension-version
+    //选择基于2024.2.4版本进行插件调试验证（localPath和version选一个）
+    localPath = 'C:\\Users\\elfin\\Downloads\\ideaIC-2024.2.4'
+    //下载地址：https://d2cico3c979uwg.cloudfront.net/com/jetbrains/intellij/idea/ideaIC/2024.2.4/ideaIC-2024.2.4.zip
+//    version = '2024.2.4'
+    plugins = ['java']
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs += ['-Xlint:unchecked', '-Xlint:deprecation', '-parameters']
+}
+
+tasks.withType(JavaExec){
+    jvmArgs=List.of("-Dfile.encoding=UTF-8", "-Dsun.stdout.encoding=UTF-8", "-Dsun.stderr.encoding=UTF-8")
+}
+
+patchPluginXml {
+    //注意这个版本号不能高于上面intellij的version,否则runIde会报错
+    sinceBuild = '202'
+//    untilBuild = '242.*'
+}
