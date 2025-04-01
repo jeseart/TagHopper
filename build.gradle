@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.cn21.edrive"
-version = "1.0"
+version = "1.0.1"
 
 sourceCompatibility = 17
 targetCompatibility = 17
@@ -28,9 +28,9 @@ dependencies {
 intellij {
     //https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html#intellij-extension-version
     //选择基于2024.2.4版本进行插件调试验证（localPath和version选一个）
-    localPath = 'C:\\Users\\elfin\\Downloads\\ideaIC-2024.2.4'
+    localPath = 'C:\\Users\\Administrator\\Downloads\\ideaIC-2024.3.4'
     //下载地址：https://d2cico3c979uwg.cloudfront.net/com/jetbrains/intellij/idea/ideaIC/2024.2.4/ideaIC-2024.2.4.zip
-//    version = '2024.2.4'
+//    version = '2024.3.4'
     plugins = ['java']
 }
 

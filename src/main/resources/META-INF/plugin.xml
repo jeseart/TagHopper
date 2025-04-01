@@ -8,36 +8,36 @@
     <name>TagHopper</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="jeseart@126.com" url="https://github.com/jeseart">天翼数字生活</vendor>
+    <vendor email="jeseart@126.com" url="https://github.com/jeseart">jeseart</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-    本插件应用于项目文档和代码链接跳转场景，适用于流程图关联代码、描述文档关联代码，并实现点击跳转的需求。<br>
+    This plugin is designed for scenarios involving document-code linking and navigation, applicable for associating flowcharts with code, linking documentation with code, and enabling click-to-jump functionality.<br>
 
-     <em>标记示范：</em><br>
-     跳转到puml文件 @puml edrive-prod-corp\doc\核心流程\跳转.puml<br>
-     跳转到文档文件（不区分文件后缀） @doc edrive-prod-corp\doc\详细设计.doc<br>
-     跳转到markdown文件 @md edrive-prod-corp\doc\readme.md<br>
-     跳转到文件夹 @folder edrive-prod-corp\doc<br>
-     跳转到java文件 @java edrive-prod-corp\src\main\java\com\cn21\edrive\Jump.java<br>
-     跳转到java文件指定行 @java edrive-prod-corp\src\main\java\com\cn21\edrive\Jump.java:100<br>
-     跳转到java方法代码引用 @java com.cn21.edrive.Jump#jumpMethod(java.lang.Long)<br>
-     跳转到指定项目的java方法代码引用（项目名是后向匹配的） @java {corp-portal}com.cn21.edrive.Jump#jumpMethod(java.lang.Long)<br>
+     <em>Annotation Examples:</em><br>
+     Jump to a puml file: @puml edrive-prod-corp\doc\核心流程\跳转.puml<br>
+     Jump to a document file (file extensions are ignored): @doc edrive-prod-corp\doc\详细设计.doc<br>
+     Jump to a markdown file: @md edrive-prod-corp\doc\readme.md<br>
+     Jump to a folder: @folder edrive-prod-corp\doc<br>
+     Jump to a Java file: @java edrive-prod-corp\src\main\java\com\cn21\edrive\Jump.java<br>
+     Jump to a specific line in a Java file:  @java edrive-prod-corp\src\main\java\com\cn21\edrive\Jump.java:100<br>
+     Jump to a Java method reference:  @java com.cn21.edrive.Jump#jumpMethod(java.lang.Long)<br>
+     Jump to a Java method in a specific project (project name uses backward matching):  @java {corp-portal}com.cn21.edrive.Jump#jumpMethod(java.lang.Long)<br>
 
-     <em>说明：</em><br>
-     1、@java标记，不标识项目名，则跳转到第一个扫描结果；<br>
-     2、java方法的引用，可使用右键菜单的Copy / Paste Special->Copy Reference(Ctrl+Alt+Shift+C)复制方法引用；在Javadoc注释中Ctrl+V获得引用路径；<br>
-     3、同名类同名不同参的方法在不同模块共存的场景下，可能会出现漏拷贝参数的情况，若无法正确跳转请检查参数个数。<br>
-     4、只要被引用的文件和使用本标记的文件在同一个根目录下被导入，即可实现跳转。<br>
-     5、示范中使用的相对路径=去掉根目录的绝对路径，项目名均为根目录下的一级目录<br>
+     <em>Notes:</em><br>
+     1、For @java tags without a project name, navigation defaults to the first scan result<br>
+     2、To reference Java methods, use the right-click menu option Copy/Paste Special → Copy Reference (Ctrl+Alt+Shift+C) to copy the method reference. Paste (Ctrl+V) the reference path into Javadoc comments<br>
+     3、In cases where classes with the same name but different parameters coexist across modules, missing parameters in the copied reference may cause navigation failures. Verify parameter counts if navigation fails.<br>
+     4、Navigation works as long as the referenced file and the file using the tag are imported under the same root directory<br>
+     5、In examples, the relative path = absolute path excluding the root directory. Project names correspond to first-level subdirectories under the root directory<br>
 
-     <em>各类型文件内的注释符号：</em><br>
+     <em>Comment syntax for file types:</em><br>
      puml: '<br>
      java: //<br>
      groovy: //<br>
-     md：&lt;ul/&gt;&lt;!-- --&gt; 或 &lt;!-- --&gt;&lt;!-- --&gt;(不这么写会有图标飘走的问题)<br>
+     md：&lt;ul/&gt;&lt;!-- --&gt; 或 &lt;!-- --&gt;&lt;!-- --&gt;(avoids icon misalignment issues)<br>
   ]]></description>
 
     <!-- Product and plugin compatibility requirements.
