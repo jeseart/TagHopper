@@ -1,4 +1,4 @@
-package com.cn21.edrive.tophopper.javaLink;
+package tophopper.javaLink;
 
 import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElementVisitor;

@@ -1,4 +1,6 @@
-package com.cn21.edrive.tophopper.javaLink;
+package tophopper.folderLink;
+
+//https://xujin.org/guides/idea-02/
 
 import com.intellij.codeInsight.daemon.LineMarkerInfo;
 import com.intellij.codeInsight.daemon.LineMarkerProvider;
@@ -11,28 +13,32 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 
-public class JavaTagLineMarkerProvider implements LineMarkerProvider {
+public class FolderTagLineMarkerProvider implements LineMarkerProvider {
+
     @Nullable
     @Override
     @SuppressWarnings("deprecation")
     public LineMarkerInfo getLineMarkerInfo(PsiElement psiElement) {
-        JavaTagVisitor visitor = new JavaTagVisitor();
+        FolderTagVisitor visitor = new FolderTagVisitor();
         psiElement.accept(visitor);
-        PsiComment javaTag = visitor.getJavaTag();
-        Icon javaIcon = IconLoader.getIcon("/java.svg", JavaTagLineMarkerProvider.class);
-        if (javaTag != null) {
+        PsiComment folderTag = visitor.getFolderTag();
+        Icon pumlIcon = IconLoader.getIcon("/folder.svg", FolderTagLineMarkerProvider.class);
+        if (folderTag != null) {
+
+
 //            System.out.println("找到图标，开始标记");
+            //noinspection deprecation
             return new LineMarkerInfo<PsiElement>(
                     psiElement,
                     psiElement.getTextRange(),
-                    javaIcon,
-                    FunctionUtil.constant("跳转到Java引用"),
-                    new JavaGutterIconNavigationHandler(),
-                    GutterIconRenderer.Alignment.LEFT);
+                    pumlIcon,
+                    FunctionUtil.constant("跳转到目录"),
+                    new FolderGutterIconNavigationHandler(),
+                    GutterIconRenderer.Alignment.LEFT
+            );
         } else {
 //            System.out.println("找不到图标");
             return null;
         }
     }
-
 }

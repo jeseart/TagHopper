@@ -1,4 +1,4 @@
-package com.cn21.edrive.tophopper.fileLink;
+package tophopper.markdownLink;
 
 import com.intellij.codeInsight.daemon.LineMarkerInfo;
 import com.intellij.codeInsight.daemon.LineMarkerProvider;
@@ -11,31 +11,26 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 
-public class FileTagLineMarkerProvider implements LineMarkerProvider {
+public class MarkdownTagLineMarkerProvider implements LineMarkerProvider {
 
     @Nullable
     @Override
     @SuppressWarnings("deprecation")
     public LineMarkerInfo getLineMarkerInfo(PsiElement psiElement) {
-        FileTagVisitor visitor = new FileTagVisitor();
+        MarkdownTagVisitor visitor = new MarkdownTagVisitor();
         psiElement.accept(visitor);
-        PsiComment fileTag = visitor.getFileTag();
-        Icon pumlIcon = IconLoader.getIcon("/word2.svg", FileTagLineMarkerProvider.class);
-        if (fileTag != null) {
-
-
-//            System.out.println("找到图标，开始标记");
-            //noinspection deprecation
+        PsiComment markdownTag = visitor.getMarkdownTag();
+        Icon pumlIcon = IconLoader.getIcon("/markdown.svg", MarkdownTagLineMarkerProvider.class);
+        if (markdownTag != null) {
             return new LineMarkerInfo<PsiElement>(
                     psiElement,
                     psiElement.getTextRange(),
                     pumlIcon,
                     FunctionUtil.constant("跳转到文档"),
-                    new FileGutterIconNavigationHandler(),
+                    new MarkdownGutterIconNavigationHandler(),
                     GutterIconRenderer.Alignment.LEFT
             );
         } else {
-//            System.out.println("找不到图标");
             return null;
         }
     }

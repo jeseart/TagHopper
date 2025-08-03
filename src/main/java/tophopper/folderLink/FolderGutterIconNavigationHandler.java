@@ -1,4 +1,4 @@
-package com.cn21.edrive.tophopper.folderLink;
+package tophopper.folderLink;
 
 import com.intellij.codeInsight.daemon.GutterIconNavigationHandler;
 import com.intellij.openapi.project.Project;

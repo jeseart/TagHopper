@@ -1,6 +1,4 @@
-package com.cn21.edrive.tophopper.folderLink;
-
-//https://xujin.org/guides/idea-02/
+package tophopper.pumlLink;
 
 import com.intellij.codeInsight.daemon.LineMarkerInfo;
 import com.intellij.codeInsight.daemon.LineMarkerProvider;
@@ -13,27 +11,23 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 
-public class FolderTagLineMarkerProvider implements LineMarkerProvider {
+public class PumlTagLineMarkerProvider implements LineMarkerProvider {
 
     @Nullable
     @Override
     @SuppressWarnings("deprecation")
     public LineMarkerInfo getLineMarkerInfo(PsiElement psiElement) {
-        FolderTagVisitor visitor = new FolderTagVisitor();
+        PumlTagVisitor visitor = new PumlTagVisitor();
         psiElement.accept(visitor);
-        PsiComment folderTag = visitor.getFolderTag();
-        Icon pumlIcon = IconLoader.getIcon("/folder.svg", FolderTagLineMarkerProvider.class);
-        if (folderTag != null) {
-
-
-//            System.out.println("找到图标，开始标记");
-            //noinspection deprecation
+        PsiComment pumlTag = visitor.getPumlTag();
+        Icon pumlIcon = IconLoader.getIcon("/uml.svg", PumlTagLineMarkerProvider.class);
+        if (pumlTag != null) {
             return new LineMarkerInfo<PsiElement>(
                     psiElement,
                     psiElement.getTextRange(),
                     pumlIcon,
-                    FunctionUtil.constant("跳转到目录"),
-                    new FolderGutterIconNavigationHandler(),
+                    FunctionUtil.constant("打开PlantUml文件"),
+                    new PumlGutterIconNavigationHandler(),
                     GutterIconRenderer.Alignment.LEFT
             );
         } else {

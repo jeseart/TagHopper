@@ -1,4 +1,4 @@
-package com.cn21.edrive.tophopper.javaLink;
+package tophopper.javaLink;
 
 import com.intellij.codeInsight.daemon.GutterIconNavigationHandler;
 import com.intellij.openapi.editor.Editor;

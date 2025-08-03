@@ -1,4 +1,4 @@
-package com.cn21.edrive.tophopper.pumlLink;
+package tophopper.pumlLink;
 
 import com.intellij.codeInsight.daemon.GutterIconNavigationHandler;
 import com.intellij.openapi.fileEditor.FileEditorManager;

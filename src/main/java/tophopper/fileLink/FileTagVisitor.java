@@ -1,4 +1,4 @@
-package com.cn21.edrive.tophopper.fileLink;
+package tophopper.fileLink;
 
 import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElementVisitor;

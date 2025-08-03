@@ -1,4 +1,4 @@
-package com.cn21.edrive.tophopper.pumlLink;
+package tophopper.javaLink;
 
 import com.intellij.codeInsight.daemon.LineMarkerInfo;
 import com.intellij.codeInsight.daemon.LineMarkerProvider;
@@ -11,28 +11,28 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 
-public class PumlTagLineMarkerProvider implements LineMarkerProvider {
-
+public class JavaTagLineMarkerProvider implements LineMarkerProvider {
     @Nullable
     @Override
     @SuppressWarnings("deprecation")
     public LineMarkerInfo getLineMarkerInfo(PsiElement psiElement) {
-        PumlTagVisitor visitor = new PumlTagVisitor();
+        JavaTagVisitor visitor = new JavaTagVisitor();
         psiElement.accept(visitor);
-        PsiComment pumlTag = visitor.getPumlTag();
-        Icon pumlIcon = IconLoader.getIcon("/uml.svg", PumlTagLineMarkerProvider.class);
-        if (pumlTag != null) {
+        PsiComment javaTag = visitor.getJavaTag();
+        Icon javaIcon = IconLoader.getIcon("/java.svg", JavaTagLineMarkerProvider.class);
+        if (javaTag != null) {
+//            System.out.println("找到图标，开始标记");
             return new LineMarkerInfo<PsiElement>(
                     psiElement,
                     psiElement.getTextRange(),
-                    pumlIcon,
-                    FunctionUtil.constant("打开PlantUml文件"),
-                    new PumlGutterIconNavigationHandler(),
-                    GutterIconRenderer.Alignment.LEFT
-            );
+                    javaIcon,
+                    FunctionUtil.constant("跳转到Java引用"),
+                    new JavaGutterIconNavigationHandler(),
+                    GutterIconRenderer.Alignment.LEFT);
         } else {
 //            System.out.println("找不到图标");
             return null;
         }
     }
+
 }
